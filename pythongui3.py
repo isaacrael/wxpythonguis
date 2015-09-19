@@ -18,7 +18,14 @@ class windowClass(wx.Frame):
         menuBar = wx.MenuBar()
         fileButton = wx.Menu()
         editButton = wx.Menu()
-        exitItem = fileButton.Append(wx.ID_EXIT, 'Exit', 'status_msg.....')
+
+#        exitItem = fileButton.Append(wx.ID_EXIT, 'Exit', 'status_msg.....')
+
+        exitItem = wx.MenuItem(fileButton, wx.ID_EXIT, 'Quit')
+        exitItem.SetBitmap(wx.Bitmap('quit.png'))
+        fileButton.AppendItem(exitItem)
+
+
 
         menuBar.Append(fileButton, 'File')
         menuBar.Append(editButton, 'Edit')
