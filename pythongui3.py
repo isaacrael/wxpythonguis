@@ -28,8 +28,12 @@ class windowClass(wx.Frame):
 
         nameBox = wx.TextEntryDialog(None, 'What is your name?', 'Welcome','name')
 
+# Gets userName response
+
         if nameBox.ShowModal()==wx.ID_OK:
             userName = nameBox.GetValue()
+
+# Gets answer to yes / no question
 
         yesNoBox = wx.MessageDialog(None, 'Start Python Quiz?', 'Question',wx.YES_NO)
         yesNoAnswer = yesNoBox.ShowModal()
@@ -37,10 +41,31 @@ class windowClass(wx.Frame):
 
 
 
-        wx.TextCtrl(panel, pos=(10, 10), size=(250,150))
-
         if yesNoAnswer == wx.ID_NO:
             userName = "Loser!"
+
+        chooseOneBox = wx.SingleChoiceDialog(None, 'What is your favorite color',
+                                             'Color Question',
+                                             ['Green', 'Red', 'Blue', 'Yellow'])
+
+        if chooseOneBox.ShowModal() == wx.ID_OK:
+            favColor = chooseOneBox.GetStringSelection()
+
+# Sets up the positioning of the text ctrl panel
+
+        wx.TextCtrl(panel, pos=(3,100), size=(150,50))
+
+# Creates awesome text and sets foreground and background colors
+
+        aweText = wx.StaticText(panel, -1, "Awesome Text", (3,3))
+        aweText.SetForegroundColour('#67cddc')
+        aweText.SetBackgroundColour('black')
+
+# Creates customized awesome text and sets foreground and background colors
+
+        rlyaweText = wx.StaticText(panel, -1, "Customized Awesomeness", (3,30))
+        rlyaweText.SetForegroundColour(favColor)
+        rlyaweText.SetBackgroundColour('black')
 
 
         self.SetTitle("Welcome " + (userName) + " ..... to Python Quiz")
